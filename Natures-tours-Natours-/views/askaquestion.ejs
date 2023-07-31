@@ -1,0 +1,128 @@
+<%-include('header')%>
+<body>
+    <div class="container">
+        <h1 class="title">Ask a Question</h1>
+        <div class="form-container">
+            <form>
+                <label for="question">What's your question?</label>
+                <textarea id="question" name="question" rows="5" placeholder="Type your question here..."></textarea>
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your name...">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Your email...">
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <div class="faq-container">
+            <h2 class="faq-title">FAQs</h2>
+            <div class="faq">
+                <h3 class="faq-question">What is the cancellation policy?</h3>
+                <p class="faq-answer">Our cancellation policy is flexible. You can cancel your booking up to 24 hours before the start of the tour.</p>
+            </div>
+            <div class="faq">
+                <h3 class="faq-question">What is included in the tour?</h3>
+                <p class="faq-answer">The tour includes a guided tour of the city, transportation, and entrance fees to all attractions.</p>
+            </div>
+            <div class="faq">
+                <h3 class="faq-question">What should I bring with me?</h3>
+                <p class="faq-answer">You should bring comfortable walking shoes, sunscreen, and a water bottle.</p>
+            </div>
+        </div>
+    </div>
+</body>
+<style>
+/* Global styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Helvetica Neue', sans-serif;
+}
+
+/* Container */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 50px;
+}
+
+/* Title */
+.title {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+/* Form */
+.form-container {
+    margin-bottom: 50px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+textarea,
+input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+button[type="submit"] {
+    background-color: #1E90FF;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+button[type="submit"]:hover {
+    background-color: #0066CC;
+}
+
+/* FAQs */
+.faq-container {
+    background-color: #F2F2F2;
+    padding: 20px;
+}
+
+.faq-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.faq-item {
+    margin-bottom: 10px;
+}
+
+.faq-item p {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.faq-item a {
+    color: #1E90FF;
+    font-weight: bold;
+}
+
+.faq-item a:hover {
+    text-decoration: underline;
+}
+</style>
+<%-include('footer')%>

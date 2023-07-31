@@ -1,0 +1,120 @@
+<%-include('header')%>
+<style>
+    #booking-form {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+    margin:50px;
+    margin-left:250px;
+    margin-bottom: 100px;
+    font-size: 16px;
+    color: #333;
+    width: 1000px;
+  }
+  #booking-form .person{
+    margin: 10px;
+
+  }
+  #booking-form label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  #booking-form input,
+  #booking-form select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+  
+  #booking-form button {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  #booking-form button:hover {
+    background-color: #45a049;
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  #error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+</style>
+<body>
+  <form id="booking-form">
+    <div class="person">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name[]" required>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email[]" required>
+      <label for="phone">Phone:</label>
+      <input type="tel" id="phone" name="phone[]" required>
+      <label for="age">Age:</label>
+      <input type="number" id="age" name="age[]" required>
+      <label for="gender">Gender:</label>
+      <select id="gender" name="gender[]" required>
+        <option value="">-- Select --</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    <button type="button" id="add-person">Add a person</button>
+    <button type="submit" id="submit"><a href="/bookingthankyou">Submit</a></button>
+  </form>  
+</body>
+<script>
+    const form = document.querySelector('#booking-form');
+    const addPersonButton = document.querySelector('#add-person');
+    const submitButton = document.querySelector('#submit');
+
+let personCount = 1;
+
+addPersonButton.addEventListener('click', () => {
+  const lastPerson = form.querySelector('.person:last-of-type');
+  const newPerson = lastPerson.cloneNode(true);
+  personCount++;
+  newPerson.querySelectorAll('input, select').forEach(field => {
+    field.value = '';
+    field.id = `${field.name}-${personCount}`;
+    field.setAttribute('name', `${field.name}[${personCount-1}]`);
+  });
+  lastPerson.insertAdjacentElement('afterend', newPerson);
+});
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+    
+//   const formData = new FormData(form);
+//   fetch('/url/to/post/data', {
+//     method: 'POST',
+//     body: formData
+//   })
+//   .then(response => response.json())
+//   .then(data => {
+//     console.log(data);
+//     // do something with the response data
+//   })
+//   .catch(error => console.error(error));
+// });
+});
+</script>
+<%-include('footer')%>
